@@ -16,6 +16,8 @@ class BankManagement :
         self.button_login.grid_forget()
         self.button_registry.grid_forget()
 
+        self.label_image.grid_forget()
+        
         self.label_login.grid(row=0, column=0, padx=250)
 
         self.label_username_login_page.grid(row=1, column=0, padx=10, pady=10, sticky='w')
@@ -27,6 +29,8 @@ class BankManagement :
         self.button_enter.grid(row=3, column=0, padx=200,pady= 10,)
         self.button_back_page2.grid(row=3, column=0, padx=300, pady=10,)
         self.button_forget.grid(row=5, column=0, padx=300, pady=10,)
+
+        
 
 
 
@@ -87,14 +91,14 @@ class BankManagement :
         self.button_enter.grid_forget()
         self.button_back_page2.grid_forget()
 
-        self.label_mainpage.grid(row = 0, column = 0, padx=170, sticky='w')
-        self.button_login.grid(row = 1, column = 0, padx=200,pady=10, sticky='w')
-        self.button_registry.grid(row = 1, column = 0, padx=300, pady=10, sticky='w')
 
-    def image():
-        pass
+        self.label_image.grid_forget()
 
-
+        self.label_image.grid(row = 0, column = 0, padx=50)
+        self.label_mainpage.grid(row = 1, column = 0, padx=170, sticky='w')
+        self.button_login.grid(row = 2, column = 0, padx=200,pady=10, sticky='w')
+        self.button_registry.grid(row = 2, column = 0, padx=300, pady=10, sticky='w')
+        
     #endregion
 
     # region command registry button (finish)
@@ -104,6 +108,7 @@ class BankManagement :
         self.label_mainpage.grid_forget()
         self.button_login.grid_forget()
         self.button_registry.grid_forget()
+        self.label_image.grid_forget()
 
         self.label_registry_page.grid(row=0, column=0, padx=250, pady=10)
 
@@ -181,6 +186,7 @@ class BankManagement :
             self.entry_confirm_password.grid_forget()
             self.button_submit.grid_forget()
             self.button_back_registry.grid_forget()
+            self.label_image.grid_forget()
 
             self.label_login.grid(row=0, column=0, padx=250)
 
@@ -219,10 +225,12 @@ class BankManagement :
             self.entry_confirm_password.grid_forget()
             self.button_submit.grid_forget()
             self.button_back_registry.grid_forget()
-
-            self.label_mainpage.grid(row = 0, column = 0, padx=170, sticky='w')
-            self.button_login.grid(row = 1, column = 0, padx=200,pady=10, sticky='w')
-            self.button_registry.grid(row = 1, column = 0, padx=300, pady=10, sticky='w')
+            self.label_image.grid_forget()
+            self.label_image.grid(row = 0, column = 0, padx=170)
+            self.label_mainpage.grid(row = 1, column = 0, padx=170, sticky='w')
+            self.button_login.grid(row = 2, column = 0, padx=200,pady=10, sticky='w')
+            self.button_registry.grid(row = 2, column = 0, padx=300, pady=10, sticky='w')
+            
 
 
 
@@ -257,11 +265,13 @@ class BankManagement :
         self.button_registry = ttk.Button(self.app, text = 'Registry', style = SUCCESS, command= self.registry) 
         self.button_registry.grid(row = 2, column = 0, padx=300, pady=10, sticky='w')
 
-        ditrect1 = "Bank_Logo.png"
-        Image1 = Image.open(ditrect1)
-        Image2 = ImageTk.PhotoImage(Image1)
-        l_image = ttk.Label(self.app , image=Image2)
-        l_image.grid(row = 0, column = 0, padx=170)
+        self.ditrect1 = "Bank_Logo.png"
+        self.Image1 = Image.open(self.ditrect1)
+        self.image_resized = self.Image1.resize((330, 300), Image.Resampling.LANCZOS)
+        self.Image2 = ImageTk.PhotoImage(self.image_resized)
+        self.label_image = ttk.Label(self.app , image=self.Image2)
+        self.label_image.grid(row = 0, column = 0, padx=170)
+        self.label_image.image = self.Image2
         
 
     #endregion 
